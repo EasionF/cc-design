@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * narrate-pipeline.mjs · L2 长解说总指挥
  *
@@ -17,7 +17,7 @@
  *   ---
  *
  *   ## intro
- *   大家好，我是花叔。今天我们 5 分钟讲清楚 LLM 是什么。
+ *   大家好，我是。今天我们 5 分钟讲清楚 LLM 是什么。
  *
  *   ## what-is
  *   LLM 全称 Large Language Model，[[cue:bigmodel]]它是一个有几千亿参数的神经网络。

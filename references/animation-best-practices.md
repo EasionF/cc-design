@@ -1,4 +1,4 @@
-# Animation Best Practices · 正向动画设计语法
+﻿# Animation Best Practices · 正向动画设计语法
 
 > 基于 Anthropic 官方三支产品动画（Claude Design / Claude Code Desktop / Claude for Word）
 > 的深度拆解，提炼出的"Anthropic 级"动画设计规则。
@@ -499,7 +499,7 @@ stage.style.transform = `
 
 ## 附录 · 本文件素材来源
 
-- Anthropic 官方动画拆解：花叔项目目录的 `参考动画/BEST-PRACTICES.md`
+- Anthropic 官方动画拆解：项目目录的 `参考动画/BEST-PRACTICES.md`
 - Anthropic 音频拆解：同目录 `AUDIO-BEST-PRACTICES.md`
 - 3 支参考视频：`ref-{1,2,3}.mp4` + 对应 `gemini-ref-*.md` / `audio-ref-*.md`
 - **严格过滤**：本 reference 不收录任何具体品牌色值、字体名、产品名。

@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * tts-doubao.mjs · 豆包语音 TTS（火山引擎 openspeech）
  *
@@ -172,7 +172,7 @@ async function tts({ text, voice, speed, encoding }) {
   if (!voiceId) throw new Error('缺 DOUBAO_TTS_VOICE_ID（检查 .env 或用 --voice 传）');
 
   const body = {
-    user: { uid: 'huashu-design' },
+    user: { uid: 'cc-design' },
     req_params: {
       text,
       speaker: voiceId,

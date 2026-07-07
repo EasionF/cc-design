@@ -1,4 +1,4 @@
-# Cinematic Patterns · Workflow Demo 的 Best Practice
+﻿# Cinematic Patterns · Workflow Demo 的 Best Practice
 
 > 从「PPT 动画」升级到「发布会级 cinematic」的 5 个关键 pattern。
 > 蒸馏自 2026-04 「聊聊 skill」 deck 的两个 cinematic demo（Nuwa workflow + Darwin workflow），实测可复现。
@@ -98,9 +98,9 @@ POINT ▶ 触发 (overlay 浮上来)：22 秒 cinematic
 
 **问题**：3D orbit / gallery 里需要素材碎片漂浮，emoji（📚🎤）丑且无品牌、SVG 手画书脊永远不像真书。
 
-**解决**：用 `huashu-gpt-image` 跑一张 4×2 grid 大图（8 件主题相关物品 · 白底 · 60px breathing space · unified style），用 `extract_grid.py --mode bbox` 抠成 8 张独立透明 PNG。
+**解决**：用 `AI 生图模型` 跑一张 4×2 grid 大图（8 件主题相关物品 · 白底 · 60px breathing space · unified style），用 `extract_grid.py --mode bbox` 抠成 8 张独立透明 PNG。
 
-**Prompt 要点**（详细 prompt patterns 见 `huashu-gpt-image` skill）：
+**Prompt 要点**（详细 prompt patterns 见 `AI 生图模型` skill）：
 - IP 锚定（"1960s Caltech archive aesthetic" / "Hearthstone-style consistent treatment"）
 - 白底（便于抠图，灰底氛围好但抠透明背景困难）
 - 4×2 不要 5×5（避免末行压缩 bug）

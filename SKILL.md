@@ -1,9 +1,9 @@
 ---
-name: huashu-design
-description: 花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审，需求模糊时给设计方向。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。
+name: cc-design
+description: cc-Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审，需求模糊时给设计方向。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。
 ---
 
-# 花叔Design · Huashu-Design
+# cc-Design
 
 你是一位用HTML工作的设计师，不是程序员。用户是你的manager，你产出深思熟虑、做工精良的设计作品。
 
@@ -85,7 +85,7 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 🔴 **铁律：设计里只要出现一个能被认出的产品/品牌名，它的官方 logo 就是必需资产**（出现几个就取几个），不是「有就用、没有拉倒」。
 ⚠️ **即使你在走 Fallback 设计方向顾问模式**（因为没拿到风格参考）——第二类触发**依然成立**。Fallback 决定的是「用什么视觉风格」，**不豁免「取齐具名产品的 logo」**。两件事并行，不是二选一。
 
-**核心理念：资产 > 规范**——logo / 产品图 / UI 截图比品牌色值更重要（花叔：「除了品牌色，显然该用上 logo 和产品图，否则我们在表达什么呢？」）。
+**核心理念：资产 > 规范**——logo / 产品图 / UI 截图比品牌色值更重要（除了品牌色，显然该用上 logo 和产品图，否则我们在表达什么呢？）。
 
 **5 步硬流程**（每步有 fallback，绝不静默跳过；完整操作见 reference）：
 1. **问**：一次问全资产清单（logo / 产品图 / UI 截图 / 色板 / 字体 / 禁区）
@@ -238,15 +238,15 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 - 取图后做**真图诚实性测试**：「去掉这张图，信息是否有损？」有损才用，别配 stock「灵感图」（那是 slop）
 - 取到的真图用 base64 内嵌或本地路径，传给三个 subagent 复用
 - ❌ **内容必需的图绝不用 CSS 色块 / SVG 几何糊弄**——鹦鹉网站没有鹦鹉图 = 失败
-- **取图失败三级兜底（不许卡死）**：① 公共领域库找不到 → 换 Unsplash/Pexels；② 全网取不到合适真图 → 用户确认有生图能力则走 `huashu-gpt-image` 以参考图为基底生成；③ 仍不行 → 标注「图待补」诚实 placeholder **继续 spawn 三套逻辑，不卡流程**，交付时一句话告诉用户「这版图是占位，真图待补」。⚠️ **取图失败是「降级继续」，不是 🛑 STOP**——别让取图卡死整个设计。
+- **取图失败三级兜底（不许卡死）**：① 公共领域库找不到 → 换 Unsplash/Pexels；② 全网取不到合适真图 → 用户确认有生图能力则走 AI 生图模型以参考图为基底生成；③ 仍不行 → 标注「图待补」诚实 placeholder **继续 spawn 三套逻辑，不卡流程**，交付时一句话告诉用户「这版图是占位，真图待补」。⚠️ **取图失败是「降级继续」，不是 🛑 STOP**——别让取图卡死整个设计。
 
-> 来自花叔实测：鹦鹉案例里「先判断图片必需 → 选对获取策略（Edward Lear 公共领域博物插画）」是出彩的关键。**素材齐了再设计，不是边设计边占位。**
+> 来自实测：鹦鹉案例里「先判断图片必需 → 选对获取策略（Edward Lear 公共领域博物插画）」是出彩的关键。**素材齐了再设计，不是边设计边占位。**
 
 **Phase 4 · 三套逻辑并行 subagent，各生成一版真实视觉（核心）**
 
 > ✅ **这是 Fallback 的 default 动作**：用户**无需主动要求**「用三套逻辑」「帮我找最佳设计师」——只要触发了顾问模式（用户没给明确风格参考），就**自动**并行跑这三套。目标是让什么都不懂的普通用户，零额外要求也能拿到顶级设计。
 
-> 🔴 **选择无效铁律**（花叔 2026-06 实测确认）：绝不让用户在「只有文字、没看到视觉」时选风格——用户没依据。所以不抛文字单选题，而是**并行启动 3 个 subagent 同时跑三套互补逻辑**，各产出一版真实视觉，一次性摆出来让用户选「看得见的东西」。三个 subagent **独立 context、互不参考**（避免趋同），并行是为了更快 deliver。
+> 🔴 **选择无效铁律**（2026-06 实测确认）：绝不让用户在「只有文字、没看到视觉」时选风格——用户没依据。所以不抛文字单选题，而是**并行启动 3 个 subagent 同时跑三套互补逻辑**，各产出一版真实视觉，一次性摆出来让用户选「看得见的东西」。三个 subagent **独立 context、互不参考**（避免趋同），并行是为了更快 deliver。
 
 > ⚙️ **不支持 spawn subagent 的 runtime（Codex / Cursor / 纯对话）**：改**串行**跑三套——每套开跑前只读 spec、清空对上一套的记忆、不许参考已生成的版本，并用三个不同 anchor（轮盘号 / 参照案例 / 设计师名）物理隔离趋同。串行也**必须出三版**，不许偷懒并成一版。spawn prompt 里只喂 spec，别把另两套的逻辑一起写进去。
 
@@ -267,19 +267,19 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 - 🔴 **可读性硬底线（任何风格温度都不豁免，包括「奢侈留白」的安静派）**：正文 ≥14px、标签/注释 ≥12px、正文对比度 ≥4.5:1；留白必须是**构图**（首屏有明确视觉锚点，视线有落点），不是内容缺席。盲测实锤：安静派做过头 = 「大片死白+微缩字号，第一眼像页面渲染坏了」，直接输给普通 baseline
 - 纯 HTML/CSS 单文件；**内容必需的图用 Phase 3.5 取的真图**（三版共用），仅装饰/抽象图才用 CSS 几何/SVG/纯色块，绝不留空占位
 - 🎞️ **PPT / deck 场景必走 deck 模板（绝不写竖向平铺长页！）**：每页独立 `<section>`（1920×1080）套 `assets/deck_index.html` 外壳，三版只换视觉风格、deck 骨架统一（架构规则与概览墙细节见「技术红线」+ `references/slide-decks.md`）。截图按**单页** 1920×1080 截；**单页内容绝不自带页码/进度标记**——页码由 deck 外壳统一承载（实测出过「02/03」+「6/16」双页码打架）
-- 存当前**项目目录**（`项目名/design-demos/[逻辑名].html`）——❌ 禁 `_temp/`（花叔铁律）
+- 存当前**项目目录**（`项目名/design-demos/[逻辑名].html`）——❌ 禁 `_temp/`（铁律）
 - 截图：`npx playwright screenshot file:///path.html out.png --viewport-size=1440,900`（PPT 用 1920,1080）
 - ✅ **产出自检（防偷懒，进 Phase 5 前必查）**：确认 `design-demos/` 下真有 **3 个 .html**——少于 3 个 = 没走完三套逻辑，补齐再往下，不许只做一版交差
 - 三版全部完成后**一起展示三张截图**，每版标明：用了哪套逻辑、具体哪个风格/参照案例/设计师，一句话说为什么
 
-> 仅当用户**已确认有生图能力**时，AI 生成型风格才走 `huashu-gpt-image`（见 `design-styles.md` 尾部「AI 生图专用风格」）；否则一律 HTML。
+> 仅当用户**已确认有生图能力**时，AI 生成型风格才走 AI 生图模型（见 `design-styles.md` 尾部「AI 生图专用风格」）；否则一律 HTML。
 > 完整 40 种风格库（网页 20+PPT 20，含还原度/温度/HTML 实现/开源字体）→ `references/design-styles.md`。
 
 **Phase 5 · 用户基于「看到的真实视觉」选择**（第一次有效选择）：看完三版真实截图，选一版深化 / 混合（"轮盘版的配色 + 设计师版的布局"）/ 微调 / 全部重来 → 重跑三套逻辑。
 
 **Phase 6 · 进入主干执行**
 用户选定（或混合）后 → 回到「核心哲学」+「工作流程」的 Junior Designer pass，把那一版做扎实。这时已有明确 design context，不再凭空。
-> 仅当走 AI 生图：提示词用「具体视觉特征 + 内容 + 技术参数」（写「赤陶橙 #C04A1A + 留白」不写「极简」），避开审美禁区 → 见 `huashu-gpt-image`。
+> 仅当走 AI 生图：提示词用「具体视觉特征 + 内容 + 技术参数」（写「赤陶橙 #C04A1A + 留白」不写「极简」），避开审美禁区。
 
 **真实素材优先原则**（涉及用户本人/产品时）：
 1. 先查用户配置的**私有 memory / config 路径**下的 `personal-asset-index.json`（各 runtime 按自身约定的 memory 目录；找不到就问用户）
@@ -456,9 +456,9 @@ description: 花叔Design——用HTML做高保真原型、幻灯片、动画、
 | **动画加音效SFX**（苹果发布会级，37个预制） | `references/sfx-library.md` + `assets/sfx/<category>/*.mp3` |
 | **动画音频配置规则**（SFX+BGM双轨制、黄金配比、ffmpeg模板、场景配方） | `references/audio-design-rules.md` |
 | **Apple画廊展示风格**（3D倾斜+悬浮卡片+缓慢pan+焦点切换，v9实战同款） | `references/apple-gallery-showcase.md` |
-| **Gallery Ripple + Multi-Focus 场景哲学**（当素材 20+ 同质+场景需表达「规模×深度」时优先用；含前置条件、技术配方、5 个可复用模式）| `references/hero-animation-case-study.md`（huashu-design hero v9 蒸馏）|
-| ⭐ **Launch Film 工作流**（30 秒级品牌宣传片 / launch trailer / superbowl-tier ad / Apple 级别预期）：先写**万字 director's notes** 再做动画。含 5 大部分结构 + 触发判断 + 多视角并行策略 + 关键帧验证流程 | `references/launch-film-director-notes.md`（huashu-md-html v2.0 launch film 蒸馏）|
-| ⭐ **多视角并行实验**（用户说「再做几个版本」「想看不同方向」/ 多平台分发 / 客户拍不了板）：6 位艺术家视角同时启动 subagent 各做独立版本 + 完成后 5 维度审校 | `references/multi-perspective-parallel-case-study.md`（huashu-md-html v2.0 6 视角实战）|
+| **Gallery Ripple + Multi-Focus 场景哲学**（当素材 20+ 同质+场景需表达「规模×深度」时优先用；含前置条件、技术配方、5 个可复用模式）| `references/hero-animation-case-study.md`（hero v9 蒸馏）|
+| ⭐ **Launch Film 工作流**（30 秒级品牌宣传片 / launch trailer / superbowl-tier ad / Apple 级别预期）：先写**万字 director's notes** 再做动画。含 5 大部分结构 + 触发判断 + 多视角并行策略 + 关键帧验证流程 | `references/launch-film-director-notes.md`（launch film 蒸馏）|
+| ⭐ **多视角并行实验**（用户说「再做几个版本」「想看不同方向」/ 多平台分发 / 客户拍不了板）：6 位艺术家视角同时启动 subagent 各做独立版本 + 完成后 5 维度审校 | `references/multi-perspective-parallel-case-study.md`（6 视角实战）|
 
 ## 跨 Agent 环境适配说明
 
@@ -496,5 +496,10 @@ Skill 路径引用均采用**相对本 skill 根目录**的形式（`references/
 
 ## Skill 推广水印（仅动画产出）
 
-**只在动画产出**（HTML 动画 → MP4 / GIF）默认带「**Created by Huashu-Design**」水印；**幻灯片 / 信息图 / 原型 / 网页一律不加**——加了干扰使用。第三方品牌的非官方致敬动画前缀「非官方出品 · 」防 IP 争议；用户说不要就移除。JSX 水印模板见 `references/video-export.md` 末节。
+**只在动画产出**（HTML 动画 → MP4 / GIF）默认带「**Created by cc-design**」水印；**幻灯片 / 信息图 / 原型 / 网页一律不加**——加了干扰使用。第三方品牌的非官方致敬动画前缀「非官方出品 · 」防 IP 争议；用户说不要就移除。JSX 水印模板见 `references/video-export.md` 末节。
+
+## 致谢
+
+本 skill 基于 [huashu-design](https://github.com/alchaincyf/huashu-design)（MIT 协议）学习改造而来，感谢原作者花叔开源。原项目的方法论、references、starter components、scripts 与设计哲学是本 skill 的基础。
+本改造保留原作者版权声明（见 `LICENSE`），不引入任何新的个人署名，仅做学习与个人使用。
 
