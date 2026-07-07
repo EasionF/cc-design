@@ -77,7 +77,7 @@ description: cc-Design——用HTML做高保真原型、幻灯片、动画、可
 
 好的hi-fi设计**一定**是从已有上下文长出来的。先问用户是否有design system/UI kit/codebase/Figma/截图。**凭空做hi-fi是last resort，一定会产出generic的作品**。如果用户说没有，先帮他去找（看项目里有没有，看有没有参考品牌）。
 
-**如果还是没有，或者用户需求表达很模糊**（如"做个好看的页面"、"帮我设计"、"不知道要什么风格"、"做个XX"没有具体参考），**不要凭通用直觉硬做**——进入 **设计方向顾问模式**，从 HTML 原生 40 种风格库（网页 20+PPT 20）里给 3 个差异化方向让用户选。完整流程见下方「设计方向顾问（Fallback 模式）」大节。
+**如果还是没有，或者用户需求表达很模糊**（如"做个好看的页面"、"帮我设计"、"不知道要什么风格"、"做个XX"没有具体参考），**不要凭通用直觉硬做**——进入 **设计方向顾问模式**，从 HTML 原生 50 种风格库（网页 25+PPT 21+移动端 2+数据可视化 2，v3.1 扩展）里给 3 个差异化方向让用户选。完整流程见下方「设计方向顾问（Fallback 模式）」大节。
 
 #### 1.a 核心资产协议（涉及具体品牌时强制执行）
 
@@ -171,7 +171,15 @@ description: cc-Design——用HTML做高保真原型、幻灯片、动画、可
 
 这不是硬规则（不做成模板），是原则：**反例要看得出是反例，不是让页面真的变成 slop**。
 
-完整清单见 `references/content-guidelines.md`。
+完整清单见 `references/content-guidelines.md`（v3.1 已补强：避免自己的默认审美、纯白配纯黑、间距非 4/8 倍数、placeholder 优于垃圾实现、五问测试、变体哲学）。
+
+##### 6.5 五问测试（每个元素过审）
+
+页面上**每一个元素**，逐条审核：① 用户关心吗？② 推动了叙事吗？③ 去掉之后页面还看得懂吗？④ 有更简洁的方式吗？⑤ 服务的是用户还是设计师？——**一个审核不通过就不应该出现在页面上**。
+
+##### 6.6 避免自己的默认审美（自省规则）
+
+cc-design 也有默认审美倾向（暖色米白 + 优雅衬线 + 土橘色点缀）。**用户主动选了 = 审美；用户没指定就默认走 = slop**。用户没指定风格时，必须走「设计方向顾问」三套并行逻辑，不能直接默认暖色米白。
 
 ## 设计方向顾问（Fallback 模式）
 
@@ -253,7 +261,7 @@ description: cc-Design——用HTML做高保真原型、幻灯片、动画、可
 每个 subagent 拿同一份 spec + 同一份用户真实内容，各按一套逻辑产出一版**纯 HTML/CSS**（default 无生图）真实视觉：
 
 **逻辑一 · 🎲 秒数轮盘（随机 · 20 选 1）**
-跑 `date +%S` 取秒数，算 `秒数 % 20 + 1` 得 1-20，从 `design-styles.md` **对应半区**（做网页用网页 20 种 / 做 PPT 用 PPT 20 种）取那一号风格，subagent 严格按其视觉 DNA + HTML 实现做。作用：用时间掷骰子，强制打破模型「每次都偷选安全极简」的确定性偏好。抽到还原度<70% 的（如 Memphis 做旧纹理）须标注「该部分用纯色块降级，不假装做出原版质感」。
+跑 `date +%S` 取秒数，算 `秒数 % 20 + 1` 得 1-20，从 `design-styles.md` **对应半区**（做网页用网页 20 种 / 做 PPT 用 PPT 20 种，v3.1 补强风格作为补充池）取那一号风格，subagent 严格按其视觉 DNA + HTML 实现做。作用：用时间掷骰子，强制打破模型「每次都偷选安全极简」的确定性偏好。抽到还原度<70% 的（如 Memphis 做旧纹理 / 水墨当代）须标注「该部分用纯色块降级，不假装做出原版质感」。
 
 **逻辑二 · 🏆 现实参照（标杆迁移）**
 选 1 个**世界上和该用户需求最相关、且你明确知道设计极出色（最好获奖：Awwwards / CSS Design Awards / FWA / Apple Design Award）**的真实网站 / PPT 模板 / iOS 原型作为参照标准。subagent 先用 WebSearch 核实该案例真实存在与其设计语言，拆解配色/字体/布局/标志元素，再迁移到用户内容上。作用：用真实世界的最高标准锚定，不靠凭空想象。
@@ -273,7 +281,7 @@ description: cc-Design——用HTML做高保真原型、幻灯片、动画、可
 - 三版全部完成后**一起展示三张截图**，每版标明：用了哪套逻辑、具体哪个风格/参照案例/设计师，一句话说为什么
 
 > 仅当用户**已确认有生图能力**时，AI 生成型风格才走 AI 生图模型（见 `design-styles.md` 尾部「AI 生图专用风格」）；否则一律 HTML。
-> 完整 40 种风格库（网页 20+PPT 20，含还原度/温度/HTML 实现/开源字体）→ `references/design-styles.md`。
+> 完整 50 种风格库（v3.1：网页 25+PPT 21+移动端 2+数据可视化 2，含还原度/温度/HTML 实现/开源字体/中文语境补强）→ `references/design-styles.md`。
 
 **Phase 5 · 用户基于「看到的真实视觉」选择**（第一次有效选择）：看完三版真实截图，选一版深化 / 混合（"轮盘版的配色 + 设计师版的布局"）/ 微调 / 全部重来 → 重跑三套逻辑。
 
@@ -447,8 +455,8 @@ description: cc-Design——用HTML做高保真原型、幻灯片、动画、可
 | **动画的正向设计语法**（Anthropic 级叙事/运动/节奏/表达风格）| `references/animation-best-practices.md`（5 段叙事+Expo easing+运动语言 8 条+3 种场景配方）|
 | **带解说的长动画 / 长概念视频**（5-20 分钟带配音、解说驱动画面、TTS 实测时长生成 timeline）| `references/voiceover-pipeline.md`（铁律：连续运动叙事、禁 PowerPoint 切换）+ `assets/narration_stage.jsx` + `scripts/{tts-doubao,narrate-pipeline}.mjs` + `scripts/{mix-voiceover,render-narration}.sh` |
 | 做Tweaks实时调参 | `references/tweaks-system.md` |
-| 没有design context怎么办 | `references/design-context.md`（薄 fallback） 或 `references/design-styles.md`（厚 fallback：HTML 原生 40 种风格库，网页 20+PPT 20，按温度分级） |
-| **需求模糊要推荐风格方向** | `references/design-styles.md`（40 种 HTML 原生风格库，含还原度/温度/开源字体）+ `assets/showcases/INDEX.md`（预制截图画廊） |
+| 没有design context怎么办 | `references/design-context.md`（薄 fallback） 或 `references/design-styles.md`（厚 fallback：HTML 原生 50 种风格库 v3.1，网页 25+PPT 21+移动端 2+数据可视化 2，按温度分级） |
+| **需求模糊要推荐风格方向** | `references/design-styles.md`（50 种 HTML 原生风格库 v3.1，含还原度/温度/开源字体/中文语境/数据可视化/移动端原生）+ `assets/showcases/INDEX.md`（预制截图画廊） |
 | **按输出类型查场景模板**（封面/PPT/信息图） | `references/scene-templates.md` |
 | 输出完后验证 | `references/verification.md` + `scripts/verify.py` |
 | **设计评审/打分**（设计完成后可选） | `references/critique-guide.md`（5 维度评分+常见问题清单） |

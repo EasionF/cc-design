@@ -1,4 +1,4 @@
-﻿# 设计风格库：网页 20 种 + PPT 20 种（HTML 原生优先）
+# 设计风格库：网页 20 种 + PPT 20 种（HTML 原生优先）
 
 > **2026-06 重构**。基于对全球 10 大网站类型 + 10 大演示类型、各 top5 公认最佳设计（共 100 个真实案例）的调研反推。
 > 旧版 20 种「平面/装置设计师哲学」库的致命问题：大胆风格几乎全是 AI-生成-only（粒子/光影/手绘），**用户默认无生图能力、default 全走 HTML 时，大胆半场直接清零，只剩极简——这是「default 千篇一律」的根因**。本库每一种都标了「纯 HTML/CSS 无生图」下的**还原度**。
@@ -356,6 +356,163 @@
 - 视觉DNA:配色=纯白或纯黑底+单一强调色(Netflix红#E50914)做唯一高亮，极致克制。字体=阅读级排印，一页一观点金句断言/纯散文零bullet零图。母版=①满版底+金句断言②口语化坦诚段落③制度名词高亮(Keeper Test)④六页散文+附录表。标志=纯文字一页一观点、零图零bullet、单色高亮金句、口语坦诚、silent-read文档感
 - HTML实现:纯排版：金句用大字clamp()左对齐层级；散文max-width控制行宽；唯一强调色span高亮关键短语；附录用极简table。零素材零图，纯文字是HTML最稳的还原
 - 字体:Newsreader / Source Serif(阅读级)或Inter(宣言式)；标题可Archivo超粗
+
+
+---
+
+## 补强风格库（v3.1 · 2026-07）
+
+> 在 v3.0 的 40 种基础上增量补充 10 种，覆盖 4 个方向：**安静派补强 / 中文语境 / 数据可视化 / 移动端原生**。
+> 每种新风格必须：有真实参考案例 + HTML 还原度 ≥70% + 有"为什么这个风格适合这个场景"的论证。
+> 参考来源：Claude Design 官方系统提示词逆向工程（[CL4R1T4S](https://github.com/elder-plinius/CL4R1T4S/blob/main/ANTHROPIC/Claude-Design-Sys-Prompt.txt)，MIT 协议）的方法论启发。
+
+### A. 安静派补强（网页 2 + PPT 1）
+
+> 现有安静派偏少（网页 4 种 / PPT 4 种），模型倾向走大胆或极简。补强后让"安静但有力"的选项更丰富。
+
+#### 网页·安静派
+
+**瑞士国际主义克制版 Swiss Editorial Restraint** `安静·还原95%`
+- 参考:Massimo Vignelli 后期（Knoll 目录、ACS 年报）；瑞士国际主义学派（Müller-Brockmann 栅格）；The New York Times 1980s 报眉
+- 适配:咨询报告、白皮书、年报、学术机构官网、法律/金融文档、高端 B2B 落地页
+- 视觉DNA:配色纯白#FFFFFF（或暖白#FAFAF8）+ 纯黑#0A0A0A + 一个结构强调色（深红#8B0000 或深蓝#1A3A6E）+ 灰阶#888/#CCC。字体衬线 display（如 Source Serif）+ 无衬线 body（如 Inter），严格 8pt 栅格。布局 12 列栅格 + 严格 baseline + 大量留白 + hairline 分割。标志元素：栅格可见、hairline、严格对齐、结构色仅用于关键数据点。
+- HTML实现:纯 CSS 100% 还原。CSS Grid 12 列 + baseline-grid + hairline border + clamp() 字号。零素材，这是 HTML 最擅长的克制版式。
+- 字体:Source Serif Pro（display）+ Inter（body）；或 Cormorant + Inter
+- 为什么适合：咨询/法律/金融场景需要"权威感"，瑞士国际主义的"网格即秩序"天然传递可信。比 Swiss Monochrome 多了衬线的编辑性，比 Functional brutalism 多了留白的呼吸。
+
+**日式留白「间」Japanese Ma Whitespace** `安静·还原85%`
+- 参考:原研哉无印良品（Muji.com）+ Kenya Hara《白》+ 深泽直人 ±0 产品页；京都和纸美学
+- 适配:高端品牌官网、生活方式产品、文化机构、禅意 SaaS 落地页、设计师作品集
+- 视觉DNA:配色近全白#F7F5F0（和纸暖白）+ 极淡墨灰#1A1A1A + 一抹抹茶绿#7A8B5C 或朱红#A0392E。字体极细无衬线 + 大字距，留白占面积 ≥60%。布局非对称留白、负空间即设计、单列居中、元素间巨大呼吸。标志元素：「间」（负空间）、和纸质感、单一材质感、元素悬浮。
+- HTML实现:纯 CSS 90% 还原。大 padding + max-width 单列 + letter-spacing 加宽 + 负 margin 制造悬浮。缺口：和纸纹理需 SVG noise 或极淡背景图（10% 透明度）。
+- 字体:Inter（细字重 200/300）+ Cooper Hewitt；中文用思源宋体（极细字重）
+- 为什么适合：日式「间」是"少即是多"的东方版，比 Swiss 多了温度，比 minimalist 多了诗意。高端生活方式品牌（如 Aesop、Muji）天然适合。
+
+#### PPT·安静派
+
+**安静权威咨询报告 Quiet Authority Deck** `安静·还原92%`
+- 参考:McKinsey/BCG/Bain 高端咨询报告；Pentagram 为 Yale / MIT 做的报告设计；RAND Corporation
+- 适配:战略咨询报告、董事会汇报、行业白皮书、年度战略复盘、投资委员会材料
+- 视觉DNA:配色深海军蓝#1A2B4A + 暖白#FAFAF8 + 金色强调#B8860B（仅用于关键数字）+ 灰阶。字体衬线标题（Source Serif）+ 无衬线正文（Inter），严格 4:3 或 16:9 栅格。布局每页一个核心论点 + 数据表 + hairline 分割 + 页脚页码章节名。标志元素：章节扉页大字 + 数据表 + 来源脚注 + 金色关键数字。
+- HTML实现:纯 CSS 95% 还原。CSS Grid 严格栅格 + 表格用 HTML table + clamp() 字号 + 页脚 absolute。零素材依赖。
+- 字体:Source Serif Pro（标题）+ Inter（正文）+ JetBrains Mono（数字 tabular）
+- 为什么适合：咨询/董事会场景需要"可信权威"，深海军蓝 + 衬线 + 数据表是行业语言。比 generic corporate 多了编辑性的克制，比 manifesto 多了数据的支撑。
+
+---
+
+### B. 中文语境补强（网页 2 + PPT 1）
+
+> 现有风格库偏西方美学。加中式美学，服务中文内容场景。
+
+#### 网页·中文语境
+
+**现代中文编辑设计 Modern Chinese Editorial** `安静·还原90%`
+- 参考:《单读》Mook 设计 / 《T Magazine 中文版》/ 字研所 / 三联生活周刊数字版；王志弘排版
+- 适配:独立媒体、文化机构、文学杂志、深度内容站、中文长文阅读
+- 视觉DNA:配色米白#F5F0E8（宣纸暖白）+ 墨黑#1A1A1A + 一抹朱红#A0392E（仅用于章节标记/重点）+ 灰阶。字体思源宋体（标题）+ 思源黑体（正文），竖排或横排混用，标点挤压。布局单列窄栏（max-width 38em）+ 大量留白 + 章节首字下沉 + 脚注侧栏。标志元素：宣纸底、宋体标题、朱红印章式章节标记、首字下沉、侧栏脚注。
+- HTML实现:纯 CSS 90% 还原。`text-spacing-trim: space-all` + `hanging-punctuation: first`（中文排版神器）+ `writing-mode: vertical-rl`（竖排可选）+ column-count 做侧栏。缺口：思源系列字体需 CDN 引入。
+- 字体:思源宋体（Source Han Serif，标题）+ 思源黑体（Source Han Sans，正文）；或霞鹜文楷
+- 为什么适合：中文长文阅读需要"编辑感"，宋体 + 朱红 + 宣纸白是中文编辑设计的经典语言。比 generic article 多了文化的厚度。
+
+**水墨当代 Ink Wash Contemporary** `安静·还原65%`
+- 参考:王澍（中国美术学院象山校区视觉）/ 徐冰《天书》/ 谷文达实验水墨；UCCA 展览视觉
+- 适配:艺术机构官网、展览页面、文化品牌 campaign、实验性 landing、艺术家作品集
+- 视觉DNA:配色水墨黑（多层灰阶 #0A0A0A → #888 → #F0F0F0）+ 宣纸白#F5F0E8 + 偶尔一抹国画色（花青#2E4A6B / 赭石#8B4513）。字体书法体或思源宋体极粗/极细对比。布局留白即意境、不对称、墨晕渐变（从浓到淡）。标志元素：水墨晕染、留白意境、书法笔触、宣纸质感、极简但有力。
+- HTML实现:纯 CSS 65% 还原（降级明显）。CSS radial-gradient 模拟墨晕 + mask-image 做笔触边缘 + 大留白。**缺口明确**：真实水墨晕染的有机质感 CSS 做不出，只能用 SVG filter（feTurbulence + feDisplacementMap）近似，效果降级。**必须在产出里标注"水墨晕染为 CSS 近似，真品质感需生图"**。
+- 字体:霞鹜文楷 / 思源宋体（极粗字重做标题）
+- 为什么适合：中式当代艺术/文化品牌需要"水墨意境"，这是西方风格库覆盖不到的。还原度低但意境可传达，适合有生图能力时配合使用。
+
+#### PPT·中文语境
+
+**中式古典宣言 Classical Chinese Manifesto** `安静·还原88%`
+- 参考:《论语》古籍排版 / 朱熹《四书章句集注》/ 中华书局典籍版 / 竖排现代实验（如《读库》特别版）
+- 适配:国学宣讲、传统文化课程、古典文学讲座、中式品牌哲学发布会、文化宣言
+- 视觉DNA:配色宣纸白#F5F0E8 + 墨黑#1A1A1A + 朱红#A0392E（句读/章节）+ 极淡灰格线。字体思源宋体（正文）+ 书法体（标题，可选），竖排右起或横排混用。布局一页一句金句（古籍一页一行）+ 大量留白 + 朱红句读 + 章节印章式标记。标志元素：竖排、句读朱红、印章、宣纸、留白即呼吸。
+- HTML实现:纯 CSS 88% 还原。`writing-mode: vertical-rl` 竖排 + `text-orientation: upright` + 大留白 + 朱红 span 高亮句读。缺口：书法标题字体需引入（霞鹜文楷等开源）。
+- 字体:霞鹜文楷 / 思源宋体（正文）+ 书法体（标题，可选）
+- 为什么适合：国学/传统文化场景需要"古典庄重"，竖排 + 朱红 + 宣纸是中式古典的视觉语言。比 generic serif 多了文化的庄重。
+
+---
+
+### C. 数据可视化补强（网页 2）
+
+> 现有缺数据 dashboard 风格，补强金融/科研/医疗场景。
+
+**彭博终端密度 Bloomberg Terminal Density** `中性·还原80%`
+- 参考:Bloomberg Terminal / FactSet / Reuters Eikon；FT 数据页 / Statista
+- 适配:金融数据 dashboard、交易终端、量化研究面板、行业数据库、企业 BI 看板
+- 视觉DNA:配色深黑底#0A0A0A + 琥珀黄#FFA500（关键数据）+ 终端绿#00FF00（涨）+ 警示红#FF413D（跌）+ 大量灰阶分层。字体等宽（JetBrains Mono / Geist Mono）做数据 tabular，无衬线做标签。布局极端信息密度、多面板分屏、表格嵌套、tickers 滚动、hairline 分割。标志元素：琥珀色数据、等宽字、多面板、信息密度极致、终端美学。
+- HTML实现:纯 CSS 80% 还原。CSS Grid 多面板分屏 + 等宽字 + CSS table + `font-variant-numeric: tabular-nums`。缺口：实时滚动 ticker 需 JS，真实图表需 SVG/Canvas（基础柱线图可纯 CSS/SVG）。
+- 字体:JetBrains Mono（数据主角）+ Inter（标签）
+- 为什么适合：金融/交易场景需要"信息密度至上"，彭博终端密度是行业语言。比 generic dashboard 多了终端的严肃感，避免了圆角卡片+左 border accent 的 slop。
+
+**科研出版物克制 Scientific Publication Restraint** `安静·还原92%`
+- 参考:Nature / Science / Cell 期刊版式 / The Lancet 图表 / arXiv preprint 排版 / Edward Tufte 数据呈现
+- 适配:学术报告、科研论文展示、医学/生物数据、白皮书、meta-analysis 汇报、证据综述
+- 视觉DNA:配色纯白#FFFFFF（或暖白#FAFAF8）+ 黑#1A1A1A + 一个数据色（深蓝#1A3A6E 或深绿#2D5F3F）+ 灰阶。字体衬线正文（Source Serif / Newsreader）+ 无衬线标题 + 等宽数字。布局单栏或双栏正文 + 图表 caption + 脚注 + 引用编号。标志元素：figure caption、引用上标、表格三线表、脚注、严格的字号层级。
+- HTML实现:纯 CSS 92% 还原。双栏 column-count + figure/figcaption + sup 上标 + border-top/bottom 三线表。图表用纯 SVG（柱/线/散点）。零素材依赖。
+- 字体:Source Serif Pro（正文）+ Inter（标题）+ JetBrains Mono（数字）
+- 为什么适合：学术/科研场景需要"严谨克制"，三线表 + caption + 引用是学术语言。比 generic report 多了学术的严谨，避免了花哨图表的 slop。
+
+---
+
+### D. 移动端原生补强（移动端 2）
+
+> 现有 app-prototype.md 偏通用，加真实原生风格。
+
+**iOS 原生真实感 iOS Native Authenticity** `中性·还原90%`
+- 参考:Apple Health / Files / Mail / Wallet / Settings；iOS 17/18 设计语言；Human Interface Guidelines
+- 适配:iOS App 原型、Apple 风格产品 demo、健康/金融/工具类 iOS 原型、Apple Watch 伴侣 App
+- 视觉DNA:配色系统白#FFFFFF + 系统黑#000000 + 系统蓝#007AFF（链接/按钮）+ 系统灰阶（#F2F2F7 分组背景 / #E5E5EA 分割线 / #8E8E93 次要文字）+ 语义色（绿#34C759 / 红#FF3B30 / 橙#FF9500）。字体 SF Pro（系统字栈 -apple-system）。布局列表分组 + 圆角卡片（系统 10pt）+ 大标题（Large Title）+ 底部 tab bar + 导航栏。标志元素：Large Title、分组列表、系统蓝、SF Pro、10pt 圆角、sheet 弹层。
+- HTML实现:纯 CSS 90% 还原。`-apple-system` 字栈 + `border-radius: 10px` + `background: #F2F2F7` 分组 + CSS Grid tab bar。缺口：真实毛玻璃需 `backdrop-filter: blur(20px)`（部分浏览器支持），sheet 手势需 JS。
+- 字体:-apple-system, BlinkMacSystemFont（系统字栈）；兜底 SF Pro Display
+- 为什么适合：iOS 原型需要"真实感"，Apple 系统组件是用户已经熟悉的语言。比 generic mobile 多了 Apple 的精致，避免了 webapp 化的 slop。
+
+**Android Material 3 Expressive** `中性·还原85%`
+- 参考:Google Wallet / Pixel UI / Google Fit / Android System UI；Material Design 3 (Material You) 设计语言
+- 适配:Android App 原型、Google 系产品 demo、Material You 风格工具类 App、跨平台对比 demo
+- 视觉DNA:配色动态主题色（Dynamic Color，从壁纸提取）+ 表面色（Surface #FFFBFE / Surface Variant #F3DED3）+ 主色#6750A4 + On-Surface#1D1B20。字体 Roboto Flex（或 Google Sans）。布局 Material 3 组件（Navigation Bar / Top App Bar / Cards / Chips / FAB）+ 圆角较大（16-28dp）+ 高度层级（tonal elevation）。标志元素：Material 3 组件、动态色、大圆角、tonal elevation、Roboto Flex。
+- HTML实现:纯 CSS 85% 还原。Material 3 token 变量 + `border-radius: 16px/28px` + tonal 用 `color-mix(in oklch, ...)`。缺口：真实动态色需 JS 提取壁纸色，Material 3 完整组件库需手写。
+- 字体:Roboto Flex（Google Fonts）；兜底 Roboto
+- 为什么适合：Android 原型需要"Material 真实感"，Material 3 是 Google 当前设计语言。比 generic mobile 多了 Material 的规范，避免了 iOS 化的 slop。
+
+---
+
+### 风格库使用补强（v3.1）
+
+#### 变体探索维度（学 Claude Design）
+
+每次设计给 3+ 变体时，**至少跨 3 个维度探索**：
+
+| 维度 | 示例 |
+|---|---|
+| visuals | 同一内容用 Swiss vs Japanese Ma vs Modern Chinese Editorial |
+| color treatments | 同一布局换暖色 / 冷色 / 单色 / 撞色 |
+| scale | 标题 60px vs 120px vs 180px 的对比 |
+| layout | 单栏 vs 双栏 vs masonry vs bento |
+| type treatments | 衬线 display vs mono display vs 手写体 |
+| texture | 纯色 vs 噪点 vs 纸感 vs 渐变 |
+
+**目标**：探索尽可能多的原子变体，让用户 mix and match 出最适合自己的版本，而不是给"完美选项"。
+
+#### 风格选择决策树（补强）
+
+```
+用户内容是什么？
+├─ 中文长文/文化/国学 → Modern Chinese Editorial / Classical Chinese Manifesto / Ink Wash Contemporary
+├─ 咨询/法律/金融/董事会 → Quiet Authority Deck / Swiss Editorial Restraint / Scientific Publication Restraint
+├─ 金融数据/交易/BI → Bloomberg Terminal Density
+├─ 学术/科研/医学 → Scientific Publication Restraint
+├─ iOS App → iOS Native Authenticity
+├─ Android App → Android Material 3 Expressive
+├─ 高端生活方式/品牌 → Japanese Ma Whitespace / Modern Chinese Editorial
+└─ 其他 → 走原有 40 种风格库
+```
+
+---
+
+**版本**：v3.1（2026-07 增量补充 10 种，覆盖安静派/中文语境/数据可视化/移动端原生。参考 Claude Design 逆向工程方法论。）
+**适用**：网页/PPT/PDF/信息图/封面/App 等所有视觉设计的 default HTML 路径
 
 
 ---
